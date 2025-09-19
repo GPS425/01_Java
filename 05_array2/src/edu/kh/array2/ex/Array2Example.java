@@ -137,9 +137,9 @@ public class Array2Example {
 		
 		char ch = 'a';
 		
-		for(int row = 0; row < arr.length; row++) {
+		for(int row = 0; row < arr.length; row++) {		// 각 열마다
 			
-			for(int col = 0; col < arr[row].length; col++) {
+			for(int col = 0; col < arr[row].length; col++) {	//각 행의 길이마다
 				arr[row][col] = ch++;
 			}
 		}
