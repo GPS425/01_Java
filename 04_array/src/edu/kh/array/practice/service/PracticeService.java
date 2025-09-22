@@ -119,7 +119,19 @@ public class PracticeService {
 
 	public void practice7() { // 해결못함
 
-		System.out.println("주민등록번호(-포함) : ");
+		System.out.print("주민등록번호(-포함) : ");
+		String input = sc.next();
+		
+		char arr[] = new char[input.length()];
+		
+		for(int i = 0 ; i < arr.length; i++) {
+			if(i <= 7) {
+				arr[i] = input.charAt(i);
+			} else {
+				arr[i] = '*';
+			}
+			System.out.print(arr[i]);
+		}
 
 	}
 
@@ -252,7 +264,99 @@ public class PracticeService {
 	}
 	
 	public void practice13() {
+		System.out.print("문자열 : ");
+		String input = sc.nextLine();
 		
+		int count = 0;
+		
+		char arr[] = new char[input.length()];
+		
+		for(int i = 0; i < arr.length; i++) {
+			char ch = input.charAt(i);
+			boolean isDuplicate = false;
+			
+			for(int j = 0; j < count; j++) {
+				if(arr[j] == ch) {
+					isDuplicate = true;
+					break;
+				}
+			}
+			
+			if(!isDuplicate) {
+				arr[count] = ch;
+				count++;
+			}
+				
+			}
+		
+		System.out.print("문자열에 있는 문자 : ");
+		for(int i = 0; i < count; i ++) {
+			System.out.print(arr[i]);
+			if(i < count - 1) {
+				System.out.print(", ");
+			}
+		}
+		System.out.println();
+		System.out.println("문자 개수 : " + count);
+		
+	}
+	
+	public void practice14(){
+		// 첫 번째 배열에 크기를 지정
+		System.out.print("배열의 크기를 입력하세요 : ");
+		int size = sc.nextInt();
+		sc.nextLine();
+		
+		String arr[] = new String[size];
+		
+		// 첫 번째 배열에 저장할 문자열 입력받기
+		for(int i = 0; i < arr.length; i++) {
+			System.out.print((i + 1) + "번째 문자열 : ");
+			arr[i] = sc.nextLine();
+		}
+		
+		// 반복이 시작되는 구간부터 while문 작성, 내부에 종료조건 만들어 break
+		while(true) {
+			System.out.print("더 값을 입력하시겠습니까?(Y/N) : ");
+			char ch = sc.next().charAt(0);
+			
+			// 값을 더 입력할 경우
+			if(ch == 'y' || ch == 'Y') {
+				System.out.print("더 입력하고 싶은 개수 : ");
+				int addSize = sc.nextInt();
+				sc.nextLine();
+				
+				//새로 값을 입력받을 배열을 다시 생성
+				//기존 배열의 크기 + 추가 입력 갯수
+				String newArr[] = new String[arr.length + addSize];
+				
+				//배열의 복사 + 새로운 문자열 입력 받기
+				for(int i = 0; i < newArr.length; i++) {
+					
+					if(i < arr.length) {	//인덱스의 값이 기존 배열보다 작을 경우(깊은 복사)
+						newArr[i] = arr[i];
+						
+					} else {	//인덱스의 값이 기존 배열보다 클 경우(새로운 값 입력)
+						System.out.print((i + 1) + "번째 문자열 : ");
+						newArr[i] = sc.nextLine();
+						
+					}
+				}
+				
+				//기존 배열 공간을 참조하던 변수 arr에 새로운 배열 공간의 주소를 가진 newArr 대입(얕은 복사)
+				arr = newArr;
+			
+			} else if(ch == 'n' || ch == 'N'){
+				break;
+				
+			} else {
+				System.out.println("잘못 입력하셨습니다. 다시 입력해주세요.");
+			
+			}
+		}
+		
+		// 배열 값 모두 출력
+		System.out.println(Arrays.toString(arr));
 	}
 	
 }
