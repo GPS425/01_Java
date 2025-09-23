@@ -19,13 +19,28 @@ public class Student {			//클래스의 선언부
 	private int v4 = 40;	// 해당 클래스 내부에서만 접근 가능
 	//private는 Getter/Setter가 있어야만 사용이 가능함
 	
+	// static 예약어
+	public static String schoolName = "KH고등학교";
 	
+	// final 예약어
+	private final int TEMP1 = 100;
+
+	//getter만 만들어지는 이유 : final 예약어가 붙은 상수 TEMP1은
+	//							 재대입이 불가하여 setter를 만들어주지 않음
+	public int getTEMP1() {
+		return TEMP1;
+	}
 	
-	
-	
+
 	// 2. 생성자
-	// 3. 메서드
+	//
 	
+	
+	
+	// 3. 메서드
+
+
+
 	public void ex() {
 		// 필드에 접근제한자 확인하기
 		// v1 ~ v4까지 전부 Student 클래스 내부에서 생성된 변수이기 때문에
