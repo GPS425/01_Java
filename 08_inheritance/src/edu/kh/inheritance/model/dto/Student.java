@@ -21,14 +21,29 @@ public class Student extends Person{
 	
 	public Student() {}
 	
-	public Student(String name, int age, String natilnality, int grade, int classroom) {
-		super();
+
+
+	public Student(String name, int age, String nationality, int grade, int classroom) {
+		
 //		this.name = name;
 //		this.age = age;
 //		this.nationality = nationality;
+		// 왜 안될까?
+		// >>this 참조변수는 본인 자신만을 의미함
+		// 부모의 고유필드인 name, age, nationality는
+		// this가 참조하고있는 주소의 필드가 아니기 때문에
+		// this 참조변수를 이용하여 직접 접근 불가
+		
+		// setter 메소드를 이용하여 초기화 가능하나 비효율적이라 사용 안함
+		
+		
+		super(name, age, nationality);
+		// super() 생성자 작성 시 생성자 메소드 내 첫 번째 줄에 작성
 		this.grade = grade;
 		this.classroom = classroom;
 	}
+
+
 
 
 
@@ -62,6 +77,13 @@ public class Student extends Person{
 	}
 	public void setClassroom(int classroom) {
 		this.classroom = classroom;
+	}
+	
+	@Override
+	public String toString() {
+		// super. : super 참조변수
+		// >> 상속 관계에서 부모 객체를 가리키는 참조변수
+		return super.toString() + " / "  + grade +  " / " + classroom;
 	}
 	
 	
