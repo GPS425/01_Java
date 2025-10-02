@@ -1,5 +1,6 @@
 package com.hw3.model.service;
 
+import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -222,6 +223,19 @@ public class LibraryService {
 		} while (input != 0);
 
 		return "==모든 수정 완료==";
+	}
+	
+	@SuppressWarnings("unused")
+	private void showBookList(List<Book> list) {
+		
+		if(list.isEmpty()) {
+			System.out.println("등록된 도서 없음.");
+			
+		} else {
+			for(Book temp : list) {
+				System.out.println(temp);
+			}
+		}
 	}
 
 	public String removeBook() {
