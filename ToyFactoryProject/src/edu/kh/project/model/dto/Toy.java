@@ -114,6 +114,8 @@ public class Toy {
 				" / 사용가능연령 : " + age + " / 제조년월일: " + manufacture + " / 재료 : " + ingredient;
 	}
 	
+	// test
+	
 	
 
 	
