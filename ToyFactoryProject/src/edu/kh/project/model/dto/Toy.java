@@ -1,5 +1,6 @@
 package edu.kh.project.model.dto;
 
+import java.util.Objects;
 import java.util.Set;
 
 public class Toy {
@@ -114,7 +115,19 @@ public class Toy {
 				" / 사용가능연령 : " + age + " / 제조년월일: " + manufacture + " / 재료 : " + ingredient;
 	}
 	
-	// test
+	@Override
+	public int hashCode() {
+		return Objects.hash(name);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		Toy other = (Toy) obj;
+		return Objects.equals(name, other.name);
+	}
 	
 	
 
