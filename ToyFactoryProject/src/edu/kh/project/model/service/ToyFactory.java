@@ -1,17 +1,6 @@
 package edu.kh.project.model.service;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.InputMismatchException;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 
 import edu.kh.project.model.dto.Toy;
 
@@ -23,12 +12,20 @@ public class ToyFactory {
 
 	private Map<Integer, String> ingredients = new LinkedHashMap<>();
 
-	public Set<String> addIngredient(Integer... keys) {
-		Set<String> materialSet = new LinkedHashSet<>();
-		for (Integer key : keys) {
-			materialSet.add(ingredients.get(key));
+	// 가변인자 : 매개변수의 수가 정확히 몇 개인지 특정할 수 없을 때 사용
+	// 자료형... 변수명
+	// 가변인자를 통해 들어온 매개변수의 데이터 타입은 배열
+	/**
+	 * 매개변수로 전달받은 값들을 재료를 저장한 Map에 있는지 확인하고 Set형태로 반환
+	 * @param keys
+	 * @return
+	 */
+	public Set<String> addIngredient(int... keys) {	
+		Set<String> ingredientSet = new LinkedHashSet<>();
+		for (int key : keys) {
+			ingredientSet.add(ingredients.get(key));
 		}
-		return materialSet;
+		return ingredientSet;
 	}
 
 	public ToyFactory() {
@@ -76,7 +73,7 @@ public class ToyFactory {
 					System.out.println(removeToy());
 					break;
 				case 4:
-					sortToyByDate();
+					toyByDate();
 					break;
 				case 5:
 					toyByAge();
@@ -190,7 +187,7 @@ public class ToyFactory {
 		return "장난감이 삭제되었습니다.";
 	}
 
-	public void sortToyByDate() {
+	public void toyByDate() {
 		System.out.println("\n<제조일 순으로 장난감을 정렬>");
 		if (toys.isEmpty()) {
 			System.out.println("장난감이 없습니다.");
@@ -294,7 +291,6 @@ public class ToyFactory {
 		
 		while(iterator.hasNext()) {
 			Map.Entry<Integer, String> ing = iterator.next();
-			
 			if(ing.getValue().equals(ingredient)) {
 				iterator.remove();
 			}

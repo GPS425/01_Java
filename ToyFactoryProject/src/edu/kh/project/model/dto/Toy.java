@@ -112,7 +112,7 @@ public class Toy {
 	@Override
 	public String toString() {
 		return ". 이름 : " + name + " / 가격 : " + price + " / 색상 : " + color + 
-				" / 사용가능연령 : " + age + " / 제조년월일: " + manufacture + " / 재료 : " + ingredient;
+				" / 사용가능연령 : " + age + " / 제조년월일: " + manufacture + " / 재료 : " + getIngredientsAsString();
 	}
 	
 	@Override
@@ -127,6 +127,14 @@ public class Toy {
 		if (getClass() != obj.getClass()) return false;
 		Toy other = (Toy) obj;
 		return Objects.equals(name, other.name);
+	}
+	
+	private String getIngredientsAsString() {
+		if (ingredient == null || ingredient.isEmpty()) {
+			return "";
+		}
+		// ingredient의 각 요소를 ", "(구분자)로 구분하여 하나의 문자열로 합친다.
+		return String.join(", ", ingredient);
 	}
 	
 	
