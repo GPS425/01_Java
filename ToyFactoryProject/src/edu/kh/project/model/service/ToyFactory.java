@@ -20,7 +20,7 @@ public class ToyFactory {
 	 * @param keys
 	 * @return
 	 */
-	public Set<String> addIngredient(int... keys) {	
+	private Set<String> addIngredient(int... keys) {	
 		Set<String> ingredientSet = new LinkedHashSet<>();
 		for (int key : keys) {
 			ingredientSet.add(ingredients.get(key));
@@ -79,7 +79,7 @@ public class ToyFactory {
 					toyByAge();
 					break;
 				case 6:
-					addIngredient();
+					addIngredients();
 					break;
 				case 7:
 					removeIngredient();
@@ -234,7 +234,7 @@ public class ToyFactory {
 		}
 	}
 
-	public void addIngredient() {
+	public void addIngredients() {
 		System.out.println("\n<재료 추가>");
 		System.out.println("---현재 등록된 재료---");
 
